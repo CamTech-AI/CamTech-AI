@@ -9,11 +9,17 @@
   "background_color": "#0c0c0e",
   "theme_color": "#0c0c0e",
   "orientation": "portrait",
+  "lang": "en",
+  "dir": "ltr",
   "categories": ["photography", "utilities"],
   "icons": [
     { "src": "images/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
     { "src": "images/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
     { "src": "images/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
     { "src": "images/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "screenshots": [
+    { "src": "screenshots/screenshot-setup.png", "sizes": "720x1440", "type": "image/png", "form_factor": "narrow", "label": "Set up your gear, then describe the shot" },
+    { "src": "screenshots/screenshot-results.png", "sizes": "720x1600", "type": "image/png", "form_factor": "narrow", "label": "Get full camera settings with reasoning" }
   ]
 }
