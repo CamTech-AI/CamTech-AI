@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CamTech AI</title>
+<meta name="description" content="Describe a shot and get the camera settings to match.">
+<meta name="theme-color" content="#0c0c0e">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="images/favicon.ico" sizes="any">
+<link rel="icon" href="images/logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page">
+
+  <header class="topbar">
+    <div class="brand"><img src="images/logo-mark.svg" alt="" class="brand-mark"><span class="brand-name">CamTech AI</span></div>
+  </header>
+
+  <main>
+    <section class="card setup-card" id="setupCard">
+      <div class="step-label">Step 1 · Required</div>
+      <h2 class="setup-title">Tell us about your gear</h2>
+      <p class="setup-sub">Fill this in first — CamTech AI tailors the settings to your camera, lenses, and gear.</p>
+      <p class="hint" id="setupHint" role="alert"></p>
+      <div class="optional-body">
+        <div class="field" style="margin-top:16px;">
+          <div class="field-label" id="modeLabel">Output type</div>
+          <div class="switch" id="modeSwitch" role="group" aria-labelledby="modeLabel">
+            <button type="button" class="switch-btn is-active" data-mode="photo" aria-pressed="true">Photo</button>
+            <button type="button" class="switch-btn" data-mode="video" aria-pressed="false">Video</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="field-label" id="styleLabel">Shooting type</div>
+          <div class="chip-row" id="styleChips" role="group" aria-labelledby="styleLabel"></div>
+        </div>
+
+        <div class="field">
+          <div class="field-label" id="cameraLabel">Camera</div>
+          <div class="input-row">
+            <select id="brandSelect" class="select" aria-label="Camera brand"></select>
+            <select id="modelSelect" class="select" aria-label="Camera model"></select>
+          </div>
+          <input type="text" id="customCamera" class="text-input is-hidden" style="margin-top:10px;" placeholder="Type your camera or phone model" aria-label="Custom camera model">
+        </div>
+
+        <div class="field-pair">
+          <div class="field" style="margin-bottom:0;">
+            <div class="field-label" id="lensLabel">Lenses on hand</div>
+            <div class="chip-row" id="lensChips" role="group" aria-labelledby="lensLabel"></div>
+          </div>
+          <div class="field" style="margin-bottom:0;">
+            <div class="field-label" id="gearLabel">Other gear</div>
+            <div class="chip-row" id="gearChips" role="group" aria-labelledby="gearLabel"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="hero">
+      <div class="step-label">Step 2</div>
+      <h1>Describe the shot you want to capture</h1>
+      <p class="hero-sub">Tell CamTech AI what you're shooting, in your own words — subject, light, movement, whatever comes to mind. It reads the description and works out the settings.</p>
+
+      <textarea id="shotInput" class="shot-input" rows="4" placeholder="e.g. A tiger near a river bank in sunny conditions, moving quickly — I want the eyes sharp"></textarea>
+
+      <button type="button" id="analyzeBtn" class="cta">Analyze Shot</button>
+      <p class="hint" id="formHint" role="alert"></p>
+    </section>
+
+    <div class="modal-backdrop is-hidden" id="analyzingSection" role="dialog" aria-modal="true" aria-label="Analyzing your shot" aria-live="polite">
+      <div class="analyzing">
+        <div class="iris" aria-hidden="true"></div>
+        <p class="analyzing-title">Analyzing your shot…</p>
+        <ul class="analyzing-steps" id="analyzingSteps"></ul>
+        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+        <p class="analyzing-fact-label">While you wait</p>
+        <p class="analyzing-fact" id="analyzingFact"></p>
+      </div>
+    </div>
+
+    <section class="results is-hidden" id="resultsSection" aria-live="polite">
+
+      <div class="card">
+        <div class="card-label">Your shot</div>
+        <p class="shot-sentence" id="shotSentence"></p>
+        <div class="chip-row detected-row" id="detectedChips"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-label">Recommended settings</div>
+        <div class="hero-rows" id="heroRows"></div>
+        <div class="settings-grid" id="settingsGrid"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-label">Lens recommendation</div>
+        <p id="lensRec"></p>
+        <div class="card-divider"></div>
+        <div class="card-label">Why these settings</div>
+        <p id="whyText"></p>
+        <div class="card-divider"></div>
+        <div class="card-label">Composition tip</div>
+        <p id="compTip"></p>
+        <div class="card-divider"></div>
+        <div class="card-label">Pro tip</div>
+        <p id="proTip"></p>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Built by <strong>Atharva Sharma</strong></p>
+  </footer>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>
